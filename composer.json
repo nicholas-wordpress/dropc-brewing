@@ -1,0 +1,12 @@
+{
+  "extra": {
+    "installer-paths": {
+      "vendor/{$vendor}/{$name}": [
+        "type:wordpress-muplugin"
+      ]
+    }
+  },
+  "require": {
+    "nicholas-wordpress/core": "^1.0"
+  }
+}
