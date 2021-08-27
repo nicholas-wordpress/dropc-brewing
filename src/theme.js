@@ -4,27 +4,20 @@ import Comments from './components/Comments'
 import fetchComments from './middlewares/route/fetchComments'
 import updateStore from './middlewares/route/updateStore'
 import updateHistory from './middlewares/route/updateHistory'
+import startLoading from './middlewares/route/startLoading'
 import setupPopstate from './middlewares/setup/setupPopstate'
 import validateCache from './middlewares/setup/validateCache'
-import { setStore, setLoadingState, setHistory } from './helpers'
-import {
-	addCacheActions,
-	addRouteActions,
-	handleClickMiddleware,
-	route,
-	setupRouter,
-	Url,
-	validateMiddleware
-} from "nicholas-router";
-
+import fetchCacheMiddleware from './middlewares/fetch/cacheMiddleware'
+import { setStore, setLoadingState } from './helpers'
+import { addRouteActions, handleClickMiddleware, setupRouter, Url, validateMiddleware } from "nicholas-router";
 import fetch from 'nicholas-wp'
-
 import {
-	updateAdminBar,
-	validateAdminPage,
-	validateCompatibilityMode,
-	primeCache
+	updateAdminBar, validateAdminPage, validateCompatibilityMode,
+	primeCache, setPreloadWorker
 } from 'nicholas-wp/middlewares'
+
+// Set up additional fetch cache middlewares.
+fetch.use( fetchCacheMiddleware )
 
 // Delay startup of this script until after the page is loaded.
 window.onload = function () {
@@ -45,7 +38,14 @@ window.onload = function () {
 
 		// Setup the Alpine store
 		setStore( pageData[0] )
-		setLoadingState( false )
+
+		// Set loading state after fonts are loaded
+		new Promise( async ( res, rej ) => {
+			await document.fonts.ready
+			setLoadingState( false )
+			res()
+		} )
+
 
 		// Store data in the cache
 		new Url( window.location.href ).updateCache( pageData[0] )
@@ -59,8 +59,9 @@ window.onload = function () {
 		validateAdminPage,
 		// Validate this page doesn't require compatibility mode
 		validateCompatibilityMode,
+		// Start loading
+		startLoading,
 		// Then, we prime the cache for this URL
-		//TODO: CREATE SETLOADING STATE MIDDLEWARE
 		primeCache,
 		// Then, we Update the Alpine store
 		updateStore,
@@ -73,11 +74,11 @@ window.onload = function () {
 	)
 
 	// Fire up Nicholas router
-	setupRouter( handleClickMiddleware, setupPopstate, validateCache )
+	setupRouter( handleClickMiddleware, setupPopstate, validateCache, setPreloadWorker )
 
 	// Fire up AlpineJS
 	Alpine.start()
 }
 
-// Export fetch so we can add middlware.
+// Export fetch so we can add middleware.
 export { fetch, Post, Comments }

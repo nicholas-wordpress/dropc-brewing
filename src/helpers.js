@@ -13,7 +13,8 @@ function setStore( pageData ) {
 	pageData = { ...defaults, ...pageData }
 
 	Alpine.store( 'posts', pageData.posts )
-	Alpine.store( 'type', pageData.type )
+	Alpine.store( 'pageType', pageData.type )
+	Alpine.store( 'postType', 'singular' === pageData.type ? getTemplateType( 0, pageData.posts ) : false )
 	Alpine.store( 'pagination', pageData.pagination )
 	Alpine.store( 'bodyClass', pageData.body_class )
 	Alpine.store( 'commentsOpen', pageData.comments_open )
@@ -29,10 +30,32 @@ async function setCompatibilityModeUrls() {
 	Alpine.store( 'compatibilityModeUrls', compatibilityModeUrls );
 }
 
-function setHistory( url ){
+function setHistory( url ) {
 	window.history.pushState( {
 		comments: Alpine.store( 'comments' )
 	}, document.title, url )
+}
+
+function getPost( index, posts = false ) {
+	posts = false === posts ? Alpine.store( 'posts' ) : posts
+
+	return undefined === posts[index] ? false : posts[index]
+}
+
+function getTemplateType( index = 0, posts = false ) {
+	const post = getPost( index, posts )
+	const postTypes = ['page']
+
+	if ( false === post || undefined === post.type ) {
+		return false
+	}
+
+	if ( postTypes.includes( post.type ) ) {
+		return post.type
+	}
+
+	// Fallback to default (post) type
+	return 'post'
 }
 
 export { setStore, setLoadingState, setCompatibilityModeUrls, setHistory }

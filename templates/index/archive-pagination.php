@@ -13,4 +13,4 @@ if ( ! nicholas()->templates()->is_valid_template( $template ) ) {
 }
 $pagination = $template->get_param( 'pagination', '' );
 ?>
-<div x-html="$store.pagination"><?= $pagination ?></div>
+<div class="max-w-screen-md mx-auto" x-html="$store.pagination"><?= $pagination ?></div>

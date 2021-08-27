@@ -7,6 +7,14 @@
     }
   },
   "require": {
-    "nicholas-wordpress/core": "^1.0"
+    "nicholas-wordpress/core": "^1.0",
+    "underpin/menu-loader": "^1.0",
+    "underpin/style-loader": "^1.1",
+    "underpin/post-template-loader": "^1.0",
+    "underpin/widget-loader": "^1.0",
+    "underpin/sidebar-loader": "^1.0"
+  },
+  "require-dev": {
+    "underpin/debug-bar-extension": "^1.0"
   }
 }

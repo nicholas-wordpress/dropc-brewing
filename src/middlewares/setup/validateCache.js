@@ -6,10 +6,9 @@ function check() {
 		const cacheStatus = JSON.parse( window.sessionStorage.getItem( 'cacheStatus' ) )
 		let cleared = false
 
-
 		if ( status.post_last_updated !== cacheStatus?.post_last_updated ) {
 			cleared = true
-		} else if ( status.theme_last_updated !== cacheStatus?.theme_last_updated ) {
+		} else if ( status.nicholas_last_updated !== cacheStatus?.nicholas_last_updated ) {
 			cleared = true
 		}
 
@@ -27,4 +26,6 @@ export default function ( args, next ) {
 	check()
 	// Check cache every 5 minutes
 	window.setInterval( check, 300000 )
+
+	next()
 }

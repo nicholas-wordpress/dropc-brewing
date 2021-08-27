@@ -1,0 +1,219 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/**
+* Helpers
+ */
+.centered {
+	@apply absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%)
+}
+
+/**
+* Body
+ */
+
+body {
+	@apply dark:bg-gray-800 dark:text-white font-sans;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	@apply font-serif;
+}
+
+/**
+* Header
+ */
+#navigation nav .menu-item {
+	@apply mx-2;
+}
+
+#navigation .custom-logo-link > img {
+	@apply h-full w-auto;
+}
+
+#navigation .custom-logo-link {
+	@apply h-24;
+}
+
+/**
+* Buttons
+ */
+
+.button {
+	@apply p-2 bg-red-700 text-white hover:bg-red-600 no-underline hover:text-white font-sans;
+}
+
+.wp-block-button a {
+	@apply font-bold no-underline px-4 py-3 rounded-full bg-red-700 text-white hover:text-white hover:bg-red-600;
+	@apply dark:text-black dark:bg-red-600 dark:hover:text-black dark:hover:bg-red-500;
+}
+
+.wp-block-button.is-style-squared a {
+	@apply rounded-none;
+}
+
+.is-style-outline > .wp-block-button__link:not(.has-text-color), .wp-block-button__link.is-style-outline:not(.has-text-color) {
+	@apply text-red-700;
+	@apply dark:text-red-600 dark:hover:text-red-500;
+}
+
+.wp-block-button.is-style-outline a {
+	@apply border-red-700;
+	@apply dark:border-red-600 dark:hover:border-red-500;
+}
+
+.wp-block-button.alignright {
+	@apply text-right;
+}
+
+
+/**
+* Galleries
+ */
+
+.prose .blocks-gallery-grid > li {
+	@apply pl-0;
+}
+
+.blocks-gallery-grid li:before {
+	@apply hidden;
+}
+
+.prose .blocks-gallery-grid img {
+	@apply my-0;
+}
+
+/**
+* Calendar
+ */
+
+.wp-block-calendar table th {
+	@apply bg-red-700 text-center text-white;
+	@apply dark:bg-red-600;
+}
+
+.wp-block-calendar table td {
+	@apply text-black text-center;
+	@apply dark:text-white;
+}
+
+/**
+* Category Widget
+ */
+.wp-block-latest-comments__comment:before {
+	@apply hidden;
+}
+
+/**
+* Post lists Widget
+ */
+
+.wp-block-latest-posts__list.is-grid li:before {
+	@apply hidden;
+}
+
+/**
+* Images
+ */
+
+.wp-caption {
+	@apply max-w-full;
+}
+
+/**
+* Featured Image
+ */
+.post #featured-image > img {
+	@apply w-full h-auto centered;
+}
+
+#featured-image > img {
+	@apply mx-auto;
+}
+
+/**
+* Comments
+ */
+.comment {
+	@apply prose dark:prose-dark;
+}
+
+.commentlist > .comment {
+	@apply border-2 border-gray-300 p-5 my-10;
+}
+
+#comments .children {
+	@apply ml-10;
+}
+
+.comment-form-comment textarea {
+	@apply max-w-full;
+}
+
+#reply-title small {
+	@apply block;
+}
+
+#reply-title small a {
+	@apply button text-sm;
+}
+
+.comment .comment-reply-link {
+	@apply button;
+}
+
+#reply-title {
+	@apply text-3xl;
+}
+
+#commentform {
+	@apply max-w-prose;
+}
+
+#respond {
+	@apply max-w-prose pt-10 mt-10 border-t-4;
+}
+
+#commentform p {
+	@apply mt-5;
+}
+
+/**
+* Pagination
+ */
+.page-numbers:not(.dots) {
+	@apply button;
+}
+
+/**
+* Pagination
+ */
+.page-numbers.dots {
+	@apply p-2 mx-2;
+}
+
+.page-numbers.current {
+	@apply mx-2 bg-gray-200 text-black hover:bg-gray-200;
+}
+
+/**
+* Forms
+ */
+
+input[type='submit'] {
+	@apply button;
+}
+
+input:not([type="submit"]):not([type="checkbox"]), textarea {
+	@apply border-2 border-gray-300 p-2 box-border w-full;
+}
+
+label {
+	@apply block;
+}

@@ -16,13 +16,13 @@ if ( ! nicholas()->templates()->is_valid_template( $template ) ) {
 if ( true === Nicholas::use_compatibility_mode() ): ?>
 	<?= nicholas()->templates()->get_template( 'compatibility-mode', 'index' ) ?>
 <?php else: ?>
-	<template x-if="$store.type === 'archive' || $store.type === 'paged'">
+	<template x-if="$store.pageType === 'archive' || $store.pageType === 'paged'">
 		<main id="content">
 			<?= nicholas()->templates()->get_template( 'index', 'archive' ) ?>
 		</main>
 	</template>
 
-	<template x-if="$store.type === 'singular'">
+	<template x-if="$store.pageType === 'singular'">
 		<main id="content">
 			<?= nicholas()->templates()->get_template( 'index', 'singular' ) ?>
 			<template x-if="$store.commentsOpen">
@@ -31,7 +31,7 @@ if ( true === Nicholas::use_compatibility_mode() ): ?>
 		</main>
 	</template>
 
-	<template x-if="$store.type === '404'">
+	<template x-if="$store.pageType === '404'">
 		<main id="content">
 			<?= nicholas()->templates()->get_template( 'index', '404' ) ?>
 		</main>

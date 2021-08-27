@@ -17,20 +17,19 @@ defaultConfig.module.rules = defaultConfig.module.rules.map( ( rule ) => {
 // Now, take the resulting export and combine it with last-minute overrides.
 module.exports = {
 	...defaultConfig,
-	...{
-		/**
-		 * Add your entry points for CSS and JS here.
-		 */
-		entry: {
-			theme: './src/theme.js',
-			editor: './src/editor.js',
-			admin: './src/admin.js'
-		},
+	/**
+	 * Add your entry points for CSS and JS here.
+	 */
+	entry: {
+		theme: './src/theme.js',
+		editor: './src/editor.js',
+		admin: './src/admin.js',
+		style: './src/theme.css'
+	},
 
-		output: {
-			...defaultConfig.output,
-			libraryTarget: 'var',
-			library: '[name]'
-		},
-	}
+	output: {
+		...defaultConfig.output,
+		libraryTarget: 'var',
+		library: '[name]'
+	},
 }

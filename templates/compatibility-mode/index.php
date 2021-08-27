@@ -20,18 +20,12 @@ if ( ! nicholas()->templates()->is_valid_template( $template ) ) {
 		while ( have_posts() ) {
 			the_post();
 			if ( is_singular() ) {
-				echo nicholas()->templates()->get_template( 'index', 'post', [
-					'content' => Nicholas::get_buffer( 'the_content' ),
-					'title'   => Nicholas::get_buffer( 'the_title' ),
-				] );
-
-				echo nicholas()->templates()->get_template( 'index', 'comments' );
+				echo $template->get_template( 'singular' );
+				if ( comments_open() ) {
+					echo nicholas()->templates()->get_template( 'index', 'comments' );
+				}
 			} else {
-				echo nicholas()->templates()->get_template( 'index', 'archive-post', [
-					'excerpt' => Nicholas::get_buffer( 'the_excerpt' ),
-					'title'   => Nicholas::get_buffer( 'the_title' ),
-					'link'    => get_post_permalink(),
-				] );
+				echo $template->get_template( 'archive' );
 			}
 		}
 		if ( ! is_singular() ) {

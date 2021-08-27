@@ -11,6 +11,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+function get_approved_comment_count( $post_id ) {
+	$comments = get_comment_count( $post_id );
+
+	return $comments['approved'];
+}
+
 // Require composer autoloader. If you forget to install composer, wp_die will fire.
 $autoload = trailingslashit( get_template_directory() ) . 'vendor/autoload.php';
 if ( ! file_exists( $autoload ) ) {
@@ -35,6 +41,49 @@ add_filter( 'nicholas/compatibility_mode_urls', function ( $urls ) {
 
 	return array_merge( $urls, $filtered_urls );
 } );
+
+register_rest_field('user','display_name',[
+	'get_callback' => function ( $user ) {
+		return get_the_author_meta('display_name', $user['id']);
+	},
+]);
+
+// Add rendered output for post thumbnail to REST calls
+register_rest_field( 'post', 'featured_image', [
+	'get_callback' => function ( $post ) {
+		return get_the_post_thumbnail( $post['id'] );
+	},
+] );
+
+// Add rendered output for post thumbnail to REST calls
+register_rest_field( 'post', 'comment_count', [
+	'get_callback' => function ( $post ) {
+		return get_approved_comment_count( $post['id'] );
+	},
+] );
+
+// Add rendered output for post thumbnail to REST calls
+register_rest_field( 'page', 'featured_image', [
+	'get_callback' => function ( $post ) {
+		return get_the_post_thumbnail( $post->post_id );
+	},
+] );
+
+// Flush cache when user with posts updates their profile.
+add_action( 'profile_update', function ( $user_id ) {
+	$user_posts = new WP_Query( [ 'fields' => 'ids', 'posts_per_page' => 1, 'author' => $user_id ] );
+
+	// If this user has any posts, flush the cache.
+	// This is necessary because user data is used on the front-end.
+	if ( ! empty( $user_posts->posts ) ) {
+		nicholas()->options()->get( 'nicholas_last_updated' )->update( current_time( 'U', 1 ) );
+	}
+} );
+
+// Set Up Theme Supports
+add_theme_support( 'custom-logo' );
+add_theme_support( 'menus' );
+add_theme_support( 'post-thumbnails' );
 
 /**
  * Templates.
@@ -63,7 +112,7 @@ nicholas()->templates()->add( 'index', [
 	'description' => "Renders the home page.",
 	'name'        => "Index Template.",
 	'group'       => 'index',
-	'root_path'    => $template_path,
+	'root_path'   => $template_path,
 	'templates'   => [
 		'index'              => [ 'override_visibility' => 'public' ],
 		'archive'            => [ 'override_visibility' => 'public' ],
@@ -71,9 +120,39 @@ nicholas()->templates()->add( 'index', [
 		'singular'           => [ 'override_visibility' => 'public' ],
 		'archive-post'       => [ 'override_visibility' => 'public' ],
 		'archive-pagination' => [ 'override_visibility' => 'public' ],
-		'post'               => [ 'override_visibility' => 'public' ],
 		'404'                => [ 'override_visibility' => 'public' ],
 		'no-posts'           => [ 'override_visibility' => 'public' ],
+	],
+] );
+
+/**
+ * Index Templates
+ * Files located in /templates/page/
+ */
+nicholas()->templates()->add( 'page', [
+	'description' => "Renders the page post type content.",
+	'name'        => "Page post type template.",
+	'group'       => 'page',
+	'root_path'   => $template_path,
+	'templates'   => [
+		'index'              => [ 'override_visibility' => 'public' ],
+		'document'           => [ 'override_visibility' => 'public' ],
+		'default'            => [ 'override_visibility' => 'public' ],
+		'compatibility-mode' => [ 'override_visibility' => 'public' ],
+	],
+] );
+
+/**
+ * Index Templates
+ * Files located in /templates/post/
+ */
+nicholas()->templates()->add( 'post', [
+	'description' => "Renders the default post type content.",
+	'name'        => "Page post type template.",
+	'group'       => 'post',
+	'root_path'   => $template_path,
+	'templates'   => [
+		'index' => [ 'override_visibility' => 'public' ],
 	],
 ] );
 
@@ -84,11 +163,13 @@ nicholas()->templates()->add( 'index', [
 nicholas()->templates()->add( 'header', [
 	'description' => "Renders the header.",
 	'name'        => "Header Template.",
-	'root_path'    => $template_path,
+	'root_path'   => $template_path,
 	'group'       => 'header',
 	'templates'   => [
-		'header'   => [ 'override_visibility' => 'public' ],
-		'noscript' => [ 'override_visibility' => 'public' ],
+		'header'          => [ 'override_visibility' => 'public' ],
+		'nav'             => [ 'override_visibility' => 'public' ],
+		'loading-wrapper' => [ 'override_visibility' => 'public' ],
+		'noscript'        => [ 'override_visibility' => 'public' ],
 	],
 ] );
 
@@ -99,7 +180,7 @@ nicholas()->templates()->add( 'header', [
 nicholas()->templates()->add( 'footer', [
 	'description' => "Renders the home page.",
 	'name'        => "Index Template.",
-	'root_path'    => $template_path,
+	'root_path'   => $template_path,
 	'group'       => 'footer',
 	'templates'   => [
 		'footer' => [ 'override_visibility' => 'public' ],
@@ -113,7 +194,7 @@ nicholas()->templates()->add( 'footer', [
 nicholas()->templates()->add( 'comments', [
 	'description' => "Renders comments.",
 	'name'        => "Comments Template.",
-	'root_path'    => $template_path,
+	'root_path'   => $template_path,
 	'group'       => 'comments',
 	'templates'   => [
 		'comments' => [ 'override_visibility' => 'public' ],
@@ -127,9 +208,60 @@ nicholas()->templates()->add( 'comments', [
 nicholas()->templates()->add( 'compatibility-mode', [
 	'description' => "Renders the page in compatibility mode.",
 	'name'        => "Compatibility Mode Index Template.",
-	'root_path'    => $template_path,
+	'root_path'   => $template_path,
 	'group'       => 'compatibility-mode',
 	'templates'   => [
-		'index' => [ 'override_visibility' => 'public' ],
+		'index'    => [ 'override_visibility' => 'public' ],
+		'singular' => [ 'override_visibility' => 'public' ],
+		'archive'  => [ 'override_visibility' => 'public' ],
 	],
+] );
+
+nicholas()->scripts()->add( 'live_reload', [
+	'name'        => 'Live Reload',
+	'src'         => get_site_url() . ":35729/livereload.js",
+	'handle'      => 'live_reload',
+	'description' => "Live Reload script for development",
+	'middlewares' => [
+		'Underpin_Scripts\Factories\Enqueue_Script',
+	],
+] );
+
+nicholas()->styles()->add( 'theme', [
+	'name'        => 'Theme Styles',
+	'src'         => nicholas()->asset_url() . 'style.css',
+	'deps'        => nicholas()->asset_dir() . 'style.asset.php',
+	'handle'      => 'theme-styles',
+	'description' => 'Stylesheet for the theme',
+	'middlewares' => [
+		'Underpin_Styles\Factories\Enqueue_Style',
+	],
+] );
+
+/**
+ * Primary menu
+ * Registers the primary menu
+ */
+nicholas()->menus()->add( 'primary', [
+	'name'     => nicholas()->__( 'Primary Menu' ),
+	'location' => 'primary',
+] );
+
+/**
+ * Document Post Template
+ * Creates the custom page template, "Document"
+ * Gets rendered in templates/page/document
+ */
+nicholas()->post_templates()->add( 'document', [
+	'name'        => 'Document',
+	'description' => 'Used for documents, and other prose-focused pages.',
+	'template'    => 'document',
+] );
+
+
+
+nicholas()->sidebars()->add( 'footer', [
+	'name'        => nicholas()->__( 'Footer' ),
+	'id'          => 'footer',
+	'description' => nicholas()->__( 'Content to display in the footer' ),
 ] );

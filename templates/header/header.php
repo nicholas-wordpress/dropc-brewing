@@ -4,8 +4,10 @@
  *
  * @author: Alex Standiford
  * @date  : 12/21/19
- * @var Theme\Abstracts\Template $template
+ * @var Underpin_Templates\Abstracts\Template $template
  */
+
+use Nicholas\Nicholas;
 use function Nicholas\nicholas;
 
 if ( ! nicholas()->templates()->is_valid_template( $template ) ) {
@@ -22,7 +24,9 @@ if ( ! nicholas()->templates()->is_valid_template( $template ) ) {
 	<?php wp_head() ?>
 </head>
 <body :class="$store.bodyClass">
+<?= false === Nicholas::use_compatibility_mode() ? $template->get_template( 'loading-wrapper' ) : ''; ?>
 <?php wp_body_open() ?>
 <?= $template->get_template( 'noscript' ) ?>
+<?= $template->get_template( 'nav' ) ?>
 <a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'sandbox' ); ?></a>
 <div id="content" class="site-content">

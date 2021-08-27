@@ -11,7 +11,8 @@ use function Nicholas\nicholas;
 if ( ! nicholas()->templates()->is_valid_template( $template ) ) {
 	return;
 }
-?>
-<template x-for="(post, index) in $store.posts" :key="index">
-	<?= nicholas()->templates()->get_template( 'index', 'post' ) ?>
-</template>
+foreach ( [ 'page', 'post' ] as $type ): ?>
+	<template x-if="$store.postType === <?= "'" . $type . "'" ?>">
+		<?= nicholas()->templates()->get_template( $type, 'index' ) ?>
+	</template>
+<?php endforeach; ?>

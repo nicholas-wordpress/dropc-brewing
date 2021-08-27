@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0cb761db61c5bb11cc4969983f0d557e",
+    "content-hash": "d9ec7bb45bdeba841cf10b9ce621cb63",
     "packages": [
         {
             "name": "composer/installers",
@@ -162,12 +162,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/nicholas-wordpress/underpin-module.git",
-                "reference": "b019abb9fd34d45a5e9778800b69ef716b2e76c1"
+                "reference": "11278165334a5db9a330e7ffd44cd0d81855fe70"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nicholas-wordpress/underpin-module/zipball/b019abb9fd34d45a5e9778800b69ef716b2e76c1",
-                "reference": "b019abb9fd34d45a5e9778800b69ef716b2e76c1",
+                "url": "https://api.github.com/repos/nicholas-wordpress/underpin-module/zipball/11278165334a5db9a330e7ffd44cd0d81855fe70",
+                "reference": "11278165334a5db9a330e7ffd44cd0d81855fe70",
                 "shasum": ""
             },
             "require": {
@@ -202,7 +202,7 @@
                 "issues": "https://github.com/nicholas-wordpress/underpin-module/issues",
                 "source": "https://github.com/nicholas-wordpress/underpin-module/tree/1.0.0"
             },
-            "time": "2021-08-15T14:49:32+00:00"
+            "time": "2021-08-16T22:28:39+00:00"
         },
         {
             "name": "underpin/cron-job-loader",
@@ -320,6 +320,43 @@
             "time": "2021-08-05T13:06:26+00:00"
         },
         {
+            "name": "underpin/menu-loader",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Underpin-WP/menu-loader.git",
+                "reference": "00421d187cb816bf38b6fbe1951f344c676fad3f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Underpin-WP/menu-loader/zipball/00421d187cb816bf38b6fbe1951f344c676fad3f",
+                "reference": "00421d187cb816bf38b6fbe1951f344c676fad3f",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "menus.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Alex Standiford",
+                    "email": "a@alexstandiford.com"
+                }
+            ],
+            "description": "Menu loader for Underpin",
+            "support": {
+                "issues": "https://github.com/Underpin-WP/menu-loader/issues",
+                "source": "https://github.com/Underpin-WP/menu-loader/tree/1.0.0"
+            },
+            "time": "2021-05-06T00:44:40+00:00"
+        },
+        {
             "name": "underpin/meta-loader",
             "version": "1.0.0",
             "source": {
@@ -358,16 +395,16 @@
         },
         {
             "name": "underpin/option-loader",
-            "version": "1.0.0",
+            "version": "1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Underpin-WP/option-loader.git",
-                "reference": "5c28b795e336a0d07269747ffc1dc27d47e9d857"
+                "reference": "b9e66e11264162827ff7dce3c0a8992932497304"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Underpin-WP/option-loader/zipball/5c28b795e336a0d07269747ffc1dc27d47e9d857",
-                "reference": "5c28b795e336a0d07269747ffc1dc27d47e9d857",
+                "url": "https://api.github.com/repos/Underpin-WP/option-loader/zipball/b9e66e11264162827ff7dce3c0a8992932497304",
+                "reference": "b9e66e11264162827ff7dce3c0a8992932497304",
                 "shasum": ""
             },
             "type": "library",
@@ -389,9 +426,46 @@
             "description": "Option loader for Underpin",
             "support": {
                 "issues": "https://github.com/Underpin-WP/option-loader/issues",
-                "source": "https://github.com/Underpin-WP/option-loader/tree/1.0.0"
+                "source": "https://github.com/Underpin-WP/option-loader/tree/1.0.1"
             },
-            "time": "2021-05-06T00:44:59+00:00"
+            "time": "2021-08-25T23:24:29+00:00"
+        },
+        {
+            "name": "underpin/post-template-loader",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Underpin-WP/post-template-loader.git",
+                "reference": "30bf33407b805bda2b20e2ad5c05957f8e949df6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Underpin-WP/post-template-loader/zipball/30bf33407b805bda2b20e2ad5c05957f8e949df6",
+                "reference": "30bf33407b805bda2b20e2ad5c05957f8e949df6",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "post-templates.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Alex Standiford",
+                    "email": "a@alexstandiford.com"
+                }
+            ],
+            "description": "Post Template Loader for Underpin",
+            "support": {
+                "issues": "https://github.com/Underpin-WP/post-template-loader/issues",
+                "source": "https://github.com/Underpin-WP/post-template-loader/tree/1.0.0"
+            },
+            "time": "2021-08-20T00:27:11+00:00"
         },
         {
             "name": "underpin/rest-endpoint-loader",
@@ -432,16 +506,16 @@
         },
         {
             "name": "underpin/script-loader",
-            "version": "1.1.2",
+            "version": "1.1.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Underpin-WP/script-loader.git",
-                "reference": "5f21ad24d40deff33831911f1f10863ebe0056e8"
+                "reference": "4816f95ca7c4351803e720b83d7e4aefa21cf1e4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Underpin-WP/script-loader/zipball/5f21ad24d40deff33831911f1f10863ebe0056e8",
-                "reference": "5f21ad24d40deff33831911f1f10863ebe0056e8",
+                "url": "https://api.github.com/repos/Underpin-WP/script-loader/zipball/4816f95ca7c4351803e720b83d7e4aefa21cf1e4",
+                "reference": "4816f95ca7c4351803e720b83d7e4aefa21cf1e4",
                 "shasum": ""
             },
             "type": "library",
@@ -463,9 +537,82 @@
             "description": "Script Loader for Underpin",
             "support": {
                 "issues": "https://github.com/Underpin-WP/script-loader/issues",
-                "source": "https://github.com/Underpin-WP/script-loader/tree/1.1.2"
+                "source": "https://github.com/Underpin-WP/script-loader/tree/1.1.3"
             },
-            "time": "2021-07-09T14:14:31+00:00"
+            "time": "2021-08-25T23:19:49+00:00"
+        },
+        {
+            "name": "underpin/sidebar-loader",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Underpin-WP/sidebar-loader.git",
+                "reference": "bf1c25a981ae76d2de934010308ead000046c754"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Underpin-WP/sidebar-loader/zipball/bf1c25a981ae76d2de934010308ead000046c754",
+                "reference": "bf1c25a981ae76d2de934010308ead000046c754",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "sidebars.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Alex Standiford",
+                    "email": "a@alexstandiford.com"
+                }
+            ],
+            "description": "Sidebar loader for Underpin",
+            "support": {
+                "issues": "https://github.com/Underpin-WP/sidebar-loader/issues",
+                "source": "https://github.com/Underpin-WP/sidebar-loader/tree/1.0.0"
+            },
+            "time": "2021-05-06T00:45:43+00:00"
+        },
+        {
+            "name": "underpin/style-loader",
+            "version": "1.1.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Underpin-WP/style-loader.git",
+                "reference": "939538348ada46633cab54be120e4ac64c3d2ed5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Underpin-WP/style-loader/zipball/939538348ada46633cab54be120e4ac64c3d2ed5",
+                "reference": "939538348ada46633cab54be120e4ac64c3d2ed5",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "styles.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Alex Standiford",
+                    "email": "a@alexstandiford.com"
+                }
+            ],
+            "support": {
+                "issues": "https://github.com/Underpin-WP/style-loader/issues",
+                "source": "https://github.com/Underpin-WP/style-loader/tree/1.1.2"
+            },
+            "time": "2021-08-25T23:32:24+00:00"
         },
         {
             "name": "underpin/template-loader",
@@ -544,9 +691,87 @@
                 "source": "https://github.com/Underpin-WP/underpin/tree/1.3.1"
             },
             "time": "2021-08-05T13:06:29+00:00"
+        },
+        {
+            "name": "underpin/widget-loader",
+            "version": "1.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Underpin-WP/widget-loader.git",
+                "reference": "371a746b907a7b635677cd59408ed18ae7b5fd45"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Underpin-WP/widget-loader/zipball/371a746b907a7b635677cd59408ed18ae7b5fd45",
+                "reference": "371a746b907a7b635677cd59408ed18ae7b5fd45",
+                "shasum": ""
+            },
+            "require": {
+                "underpin/logger-loader": "^2.0"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "index.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Alex Standiford",
+                    "email": "a@alexstandiford.com"
+                }
+            ],
+            "description": "Widget loader for Underpin",
+            "support": {
+                "issues": "https://github.com/Underpin-WP/widget-loader/issues",
+                "source": "https://github.com/Underpin-WP/widget-loader/tree/1.0.2"
+            },
+            "time": "2021-08-05T13:08:19+00:00"
         }
     ],
-    "packages-dev": [],
+    "packages-dev": [
+        {
+            "name": "underpin/debug-bar-extension",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Underpin-WP/debug-bar-extension.git",
+                "reference": "6a025f763a7a457449bba511ed3651bdfbaa9366"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Underpin-WP/debug-bar-extension/zipball/6a025f763a7a457449bba511ed3651bdfbaa9366",
+                "reference": "6a025f763a7a457449bba511ed3651bdfbaa9366",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "debug-bar.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Alex Standiford",
+                    "email": "a@alexstandiford.com"
+                }
+            ],
+            "description": "Extension to integrate Debug Bar in Underpin",
+            "support": {
+                "issues": "https://github.com/Underpin-WP/debug-bar-extension/issues",
+                "source": "https://github.com/Underpin-WP/debug-bar-extension/tree/1.0.0"
+            },
+            "time": "2021-05-12T04:17:04+00:00"
+        }
+    ],
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": [],
