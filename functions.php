@@ -65,7 +65,7 @@ register_rest_field( 'post', 'comment_count', [
 // Add rendered output for post thumbnail to REST calls
 register_rest_field( 'page', 'featured_image', [
 	'get_callback' => function ( $post ) {
-		return get_the_post_thumbnail( $post->post_id );
+		return get_the_post_thumbnail( $post['id'] );
 	},
 ] );
 
@@ -78,6 +78,11 @@ add_action( 'profile_update', function ( $user_id ) {
 	if ( ! empty( $user_posts->posts ) ) {
 		nicholas()->options()->get( 'nicholas_last_updated' )->update( current_time( 'U', 1 ) );
 	}
+} );
+
+// Enqueue stylesheet in block editor
+add_action( 'enqueue_block_editor_assets', function () {
+	nicholas()->styles()->get( 'theme' )->enqueue();
 } );
 
 // Set Up Theme Supports
@@ -217,16 +222,6 @@ nicholas()->templates()->add( 'compatibility-mode', [
 	],
 ] );
 
-nicholas()->scripts()->add( 'live_reload', [
-	'name'        => 'Live Reload',
-	'src'         => get_site_url() . ":35729/livereload.js",
-	'handle'      => 'live_reload',
-	'description' => "Live Reload script for development",
-	'middlewares' => [
-		'Underpin_Scripts\Factories\Enqueue_Script',
-	],
-] );
-
 nicholas()->styles()->add( 'theme', [
 	'name'        => 'Theme Styles',
 	'src'         => nicholas()->asset_url() . 'style.css',
@@ -257,7 +252,6 @@ nicholas()->post_templates()->add( 'document', [
 	'description' => 'Used for documents, and other prose-focused pages.',
 	'template'    => 'document',
 ] );
-
 
 
 nicholas()->sidebars()->add( 'footer', [

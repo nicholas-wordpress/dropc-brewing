@@ -38,13 +38,7 @@ window.onload = function () {
 
 		// Setup the Alpine store
 		setStore( pageData[0] )
-
-		// Set loading state after fonts are loaded
-		new Promise( async ( res, rej ) => {
-			await document.fonts.ready
-			setLoadingState( false )
-			res()
-		} )
+		setLoadingState( false )
 
 
 		// Store data in the cache

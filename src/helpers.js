@@ -54,6 +54,11 @@ function getTemplateType( index = 0, posts = false ) {
 		return post.type
 	}
 
+	// Beer post type just uses the page type.
+	if ( post.type === 'beer' ) {
+		return 'page'
+	}
+
 	// Fallback to default (post) type
 	return 'post'
 }

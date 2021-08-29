@@ -15,8 +15,11 @@ if ( ! nicholas()->templates()->is_valid_template( $template ) ) {
 
 ?>
 <header id="navigation">
-	<div class="flex justify-between h-28 items-center px-12 text-white bg-black">
-		<?= get_custom_logo() ?>
+	<div class="flex flex-col lg:flex-row text-center lg:text-left justify-between h-28 items-center px-12 text-white bg-black">
+		<div>
+			<a href="/" class="block font-serif text-3xl"><?= get_bloginfo( 'name' ) ?></a>
+			<em class="block"><?= get_bloginfo( 'description' ) ?></em>
+		</div>
 		<?php
 		wp_nav_menu( [
 			'theme_location' => 'primary',

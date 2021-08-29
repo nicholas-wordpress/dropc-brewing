@@ -40,7 +40,7 @@ if ( Nicholas::use_compatibility_mode() ) {
 <article class="mx-auto max-w-screen-md my-20 p-5 border-2 box-border" x-data="theme.Post(index)">
 	<header class="mb-5">
 		<h2 class="text-4xl break-words">
-			<a class="text-red-500" x-html="title" x-bind:href="link" href="<?= $url ?>"><?= $title ?></a>
+			<a x-html="title" x-bind:href="link" href="<?= $url ?>"><?= $title ?></a>
 		</h2>
 		<div class="flex divide-x divide-gray-500 divide-solid text-sm text-gray-500">
 			<span class="pr-2">Last Updated on <time x-text="lastUpdated"><?= $last_updated ?></time></span>

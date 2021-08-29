@@ -4,9 +4,159 @@
     "color": {
       "palette": [
         {
+          "color": "#fffbeb",
+          "slug": "yellow-50",
+          "name": "Yellow 50"
+        },
+        {
+          "color": "#fef3c7",
+          "slug": "yellow-100",
+          "name": "Yellow 100"
+        },
+        {
+          "color": "#fde68a",
+          "slug": "yellow-200",
+          "name": "Yellow 200"
+        },
+        {
+          "color": "#fcd34d",
+          "slug": "yellow-300",
+          "name": "Yellow 300"
+        },
+        {
+          "color": "#fbbf24",
+          "slug": "yellow-400",
+          "name": "Yellow 400"
+        },
+        {
+          "color": "#f59e0b",
+          "slug": "yellow-500",
+          "name": "Yellow 500"
+        },
+        {
+          "color": "#d97706",
+          "slug": "yellow-600",
+          "name": "Yellow 600"
+        },
+        {
+          "color": "#b45309",
+          "slug": "yellow-700",
+          "name": "Yellow 700"
+        },
+        {
+          "color": "#92400e",
+          "slug": "yellow-800",
+          "name": "Yellow 800"
+        },
+        {
+          "color": "#491b02",
+          "slug": "yellow-900",
+          "name": "Yellow 900"
+        },
+        {
+          "color": "#fafaf9",
+          "slug": "gray-50",
+          "name": "Gray 50"
+        },
+        {
+          "color": "#f5f5f4",
+          "slug": "gray-100",
+          "name": "Gray 100"
+        },
+        {
+          "color": "#e7e5e4",
+          "slug": "gray-200",
+          "name": "Gray 200"
+        },
+        {
+          "color": "#d6d3d1",
+          "slug": "gray-300",
+          "name": "Gray 300"
+        },
+        {
+          "color": "#a8a29e",
+          "slug": "gray-400",
+          "name": "Gray 400"
+        },
+        {
+          "color": "#78716c",
+          "slug": "gray-500",
+          "name": "Gray 500"
+        },
+        {
+          "color": "#57534e",
+          "slug": "gray-600",
+          "name": "Gray 600"
+        },
+        {
+          "color": "#44403c",
+          "slug": "gray-700",
+          "name": "Gray 700"
+        },
+        {
+          "color": "#292524",
+          "slug": "gray-800",
+          "name": "Gray 800"
+        },
+        {
+          "color": "#1c1917",
+          "slug": "gray-900",
+          "name": "Gray 900"
+        },
+        {
+          "color": "#f8efee",
+          "slug": "red-50",
+          "name": "Red 50"
+        },
+        {
+          "color": "#f8dddc",
+          "slug": "red-100",
+          "name": "Red 100"
+        },
+        {
+          "color": "#f3aeac",
+          "slug": "red-200",
+          "name": "Red 200"
+        },
+        {
+          "color": "#ec7471",
+          "slug": "red-300",
+          "name": "Red 300"
+        },
+        {
+          "color": "#e84a46",
+          "slug": "red-400",
+          "name": "Red 400"
+        },
+        {
+          "color": "#E21B16",
+          "slug": "red-500",
+          "name": "Red 500"
+        },
+        {
+          "color": "#cc1512",
+          "slug": "red-600",
+          "name": "Red 600"
+        },
+        {
+          "color": "#9D1612",
+          "slug": "red-700",
+          "name": "Red 700"
+        },
+        {
+          "color": "#6f0f0c",
+          "slug": "red-800",
+          "name": "Red 800"
+        },
+        {
+          "color": "#410200",
+          "slug": "red-900",
+          "name": "Red 900"
+        },
+        {
           "name": "Black",
           "slug": "black",
-          "color": "#000000"
+          "color": "#0d0500"
         },
         {
           "name": "White",

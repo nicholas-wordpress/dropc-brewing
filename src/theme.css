@@ -46,12 +46,12 @@ h1, h2, h3, h4, h5, h6 {
  */
 
 .button {
-	@apply p-2 bg-red-700 text-white hover:bg-red-600 no-underline hover:text-white font-sans;
+	@apply p-2 bg-red-600 text-white hover:bg-red-500 no-underline hover:text-white font-sans;
 }
 
 .wp-block-button a {
-	@apply font-bold no-underline px-4 py-3 rounded-full bg-red-700 text-white hover:text-white hover:bg-red-600;
-	@apply dark:text-black dark:bg-red-600 dark:hover:text-black dark:hover:bg-red-500;
+	@apply font-bold no-underline px-4 py-3 rounded-full bg-red-600 text-white hover:text-white hover:bg-red-500;
+	@apply dark:text-black dark:bg-red-500 dark:hover:text-black dark:hover:bg-red-500;
 }
 
 .wp-block-button.is-style-squared a {
@@ -59,13 +59,13 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .is-style-outline > .wp-block-button__link:not(.has-text-color), .wp-block-button__link.is-style-outline:not(.has-text-color) {
-	@apply text-red-700;
-	@apply dark:text-red-600 dark:hover:text-red-500;
+	@apply text-red-600;
+	@apply dark:text-red-500 dark:hover:text-red-500;
 }
 
 .wp-block-button.is-style-outline a {
-	@apply border-red-700;
-	@apply dark:border-red-600 dark:hover:border-red-500;
+	@apply border-red-600;
+	@apply dark:border-red-500 dark:hover:border-red-500;
 }
 
 .wp-block-button.alignright {
@@ -94,8 +94,8 @@ h1, h2, h3, h4, h5, h6 {
  */
 
 .wp-block-calendar table th {
-	@apply bg-red-700 text-center text-white;
-	@apply dark:bg-red-600;
+	@apply bg-red-600 text-center text-white;
+	@apply dark:bg-red-500;
 }
 
 .wp-block-calendar table td {
@@ -216,4 +216,23 @@ input:not([type="submit"]):not([type="checkbox"]), textarea {
 
 label {
 	@apply block;
+}
+
+/**
+* Beer List
+ */
+.beer-wrapper {
+	@apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4;
+}
+
+.beer-wrapper article {
+	@apply border-none;
+}
+
+.beer-info h3 {
+	@apply mt-0;
+}
+
+.beer-wrapper article {
+	grid-template-columns: 75px auto;
 }
