@@ -42,11 +42,11 @@ add_filter( 'nicholas/compatibility_mode_urls', function ( $urls ) {
 	return array_merge( $urls, $filtered_urls );
 } );
 
-register_rest_field('user','display_name',[
+register_rest_field( 'user', 'display_name', [
 	'get_callback' => function ( $user ) {
-		return get_the_author_meta('display_name', $user['id']);
+		return get_the_author_meta( 'display_name', $user['id'] );
 	},
-]);
+] );
 
 // Add rendered output for post thumbnail to REST calls
 register_rest_field( 'post', 'featured_image', [
@@ -89,6 +89,7 @@ add_action( 'enqueue_block_editor_assets', function () {
 add_theme_support( 'custom-logo' );
 add_theme_support( 'menus' );
 add_theme_support( 'post-thumbnails' );
+add_theme_support( 'title-tag' );
 
 /**
  * Templates.

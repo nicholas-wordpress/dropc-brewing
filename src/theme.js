@@ -5,6 +5,7 @@ import fetchComments from './middlewares/route/fetchComments'
 import updateStore from './middlewares/route/updateStore'
 import updateHistory from './middlewares/route/updateHistory'
 import startLoading from './middlewares/route/startLoading'
+import updateSEO from './middlewares/route/updateSEO'
 import setupPopstate from './middlewares/setup/setupPopstate'
 import validateCache from './middlewares/setup/validateCache'
 import fetchCacheMiddleware from './middlewares/fetch/cacheMiddleware'
@@ -57,6 +58,8 @@ window.onload = function () {
 		startLoading,
 		// Then, we prime the cache for this URL
 		primeCache,
+		// Update SEO content in head
+		updateSEO,
 		// Then, we Update the Alpine store
 		updateStore,
 		// Maybe fetch comments, if enabled
