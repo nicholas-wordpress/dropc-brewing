@@ -1,6 +1,6 @@
 import { Url } from "nicholas-router";
 import Alpine from "alpinejs";
-import { setStore } from '../../helpers'
+import { setStore, setTitle } from '../../helpers'
 
 export default ( args, next ) => {
 	window.onpopstate = function ( e ) {
@@ -9,6 +9,7 @@ export default ( args, next ) => {
 		if ( cache ) {
 			e.preventDefault()
 			setStore( cache )
+			setTitle( url )
 
 			if ( cache.comments_open ) {
 				// If the comments are in the cache

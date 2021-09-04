@@ -1,4 +1,6 @@
 import Alpine from "alpinejs";
+import fetch from "nicholas-wp";
+import { Url } from "nicholas-router"
 
 function setStore( pageData ) {
 	const defaults = {
@@ -63,4 +65,32 @@ function getTemplateType( index = 0, posts = false ) {
 	return 'post'
 }
 
-export { setStore, setLoadingState, setCompatibilityModeUrls, setHistory }
+function setTitle( url ) {
+	return new Promise( async ( res, rej ) => {
+		const data = new Url( url ).getCache()
+
+		// If the seo tag isn't in the cache, add it.
+		if ( undefined === data || undefined === data.seo_tag ) {
+			try {
+				const response = await fetch( {
+					path: `/yoast/v1/get_head?url=${args.url.href}`
+				} )
+
+				args.url.updateCache( { seo_tag: response.html } )
+				data.seo_tag = response.html
+			} catch ( error ) {
+				args.url.updateCache( { seo_tag: error.html } )
+				data.seo_tag = error.html
+			}
+		}
+
+		document.head.innerHTML = document.head.innerHTML.replace(
+			/<!-- This site is optimized with the Yoast SEO plugin.+<!-- \/ Yoast SEO plugin\. -->/gms,
+			data.seo_tag
+		)
+
+		res();
+	} )
+}
+
+export { setStore, setTitle, setLoadingState, setCompatibilityModeUrls, setHistory }
