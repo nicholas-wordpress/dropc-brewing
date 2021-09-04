@@ -86,9 +86,6 @@ function setTitle( url ) {
 			}
 		}
 
-		document.title = url.href
-		return
-
 		document.head.innerHTML = document.head.innerHTML.replace(
 			/<!-- This site is optimized with the Yoast SEO plugin.+<!-- \/ Yoast SEO plugin\. -->/gms,
 			data.seo_tag
