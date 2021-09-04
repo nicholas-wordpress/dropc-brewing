@@ -5,5 +5,5 @@ import {Admin} from 'nicholas-wp/admin'
 // Render the app
 window.onload = () => render( <Admin/>, document.getElementById( 'app' ) )
 
-// Export fetch, so we can add midleware via PHP
+// Export fetch, so we can add middleware via PHP
 export { fetch }
