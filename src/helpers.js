@@ -67,16 +67,13 @@ function getTemplateType( index = 0, posts = false ) {
 
 function setTitle( url ) {
 	return new Promise( async ( res, rej ) => {
-		url = new Url( url )
 		const data = url.getCache()
-		const setHead = () => document.head.innerHTML = document.head.innerHTML.replace(
-			/<!-- This site is optimized with the Yoast SEO plugin.+<!-- \/ Yoast SEO plugin\. -->/gms,
-			data.seo_tag
-		)
 
 		// If the seo tag isn't in the cache, add it.
 		if ( undefined === data || undefined === data.seo_tag ) {
+
 			try {
+
 				const response = await fetch( {
 					path: `/yoast/v1/get_head?url=${url.href}`
 				} )
@@ -84,15 +81,18 @@ function setTitle( url ) {
 				url.updateCache( { seo_tag: response.html } )
 				data.seo_tag = response.html
 			} catch ( error ) {
-				url.updateCache( { seo_tag: error.html } )
+
 				data.seo_tag = error.html
 			}
-			setHead()
-		} else {
-			// We have to set a rev-limiter on this. If we set this too fast it confuses some browsers.
-			window.setTimeout( setHead, 1000 )
 		}
 
+		document.title = url.href
+		return
+
+		document.head.innerHTML = document.head.innerHTML.replace(
+			/<!-- This site is optimized with the Yoast SEO plugin.+<!-- \/ Yoast SEO plugin\. -->/gms,
+			data.seo_tag
+		)
 
 		res();
 	} )
