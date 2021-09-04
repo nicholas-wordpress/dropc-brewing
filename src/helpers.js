@@ -67,19 +67,20 @@ function getTemplateType( index = 0, posts = false ) {
 
 function setTitle( url ) {
 	return new Promise( async ( res, rej ) => {
-		const data = new Url( url ).getCache()
+		url = new Url( url )
+		const data = url.getCache()
 
 		// If the seo tag isn't in the cache, add it.
 		if ( undefined === data || undefined === data.seo_tag ) {
 			try {
 				const response = await fetch( {
-					path: `/yoast/v1/get_head?url=${args.url.href}`
+					path: `/yoast/v1/get_head?url=${url.href}`
 				} )
 
-				args.url.updateCache( { seo_tag: response.html } )
+				url.updateCache( { seo_tag: response.html } )
 				data.seo_tag = response.html
 			} catch ( error ) {
-				args.url.updateCache( { seo_tag: error.html } )
+				url.updateCache( { seo_tag: error.html } )
 				data.seo_tag = error.html
 			}
 		}
