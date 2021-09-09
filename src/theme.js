@@ -7,14 +7,13 @@ import updateHistory from './middlewares/route/updateHistory'
 import startLoading from './middlewares/route/startLoading'
 import setTitle from './middlewares/route/setTitle'
 import setupPopstate from './middlewares/setup/setupPopstate'
-import validateCache from './middlewares/setup/validateCache'
 import fetchCacheMiddleware from './middlewares/fetch/cacheMiddleware'
 import { setStore, setLoadingState } from './helpers'
 import { addRouteActions, handleClickMiddleware, setupRouter, Url, validateMiddleware } from "nicholas-router";
 import fetch from 'nicholas-wp'
 import {
 	updateAdminBar, validateAdminPage, validateCompatibilityMode,
-	primeCache, setPreloadWorker
+	primeCache, setPreloadWorker, validateCacheWorker
 } from 'nicholas-wp/middlewares'
 
 // Set up additional fetch cache middlewares.
@@ -71,7 +70,7 @@ window.onload = function () {
 	)
 
 	// Fire up Nicholas router
-	setupRouter( handleClickMiddleware, setupPopstate, validateCache, setPreloadWorker )
+	setupRouter( handleClickMiddleware, setupPopstate, validateCacheWorker, setPreloadWorker )
 
 	// Fire up AlpineJS
 	Alpine.start()
